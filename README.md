@@ -1,2 +1,5 @@
 # Bizantine-Fault-Tolerance
-https://es.overleaf.com/read/kjbwcnsxwwgc
+
+
+Read the paper.
+https://www.overleaf.com/read/vnywscwngmgs
