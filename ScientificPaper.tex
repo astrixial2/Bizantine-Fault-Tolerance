@@ -1,0 +1,586 @@
+
+\documentclass{article}
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{amsfonts, amsthm, amsmath, amssymb}
+\usepackage{stix}
+\usepackage{a4wide}
+\usepackage{hyperref}
+\usepackage{authblk}
+\usepackage[style=alphabetic]{biblatex}
+\usepackage[pdfauthor={Author's name},%
+pdftitle={Document Title},%
+pagebackref=true,%
+pdftex]{hyperref}
+
+\addbibresource{references.bib}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=blue,
+    linkcolor=blue,
+}
+\title{Review in Bizantine fault tolerance and Bizantine agreement protocols (Bizantine environment)}
+
+
+\author{
+  Adan M. Pablo\thanks{Use footnote for providing further
+    information about author (webpage, alternative
+    address)---\emph{not} for acknowledging funding agencies.} \\
+ \\\texttt{pabloadd@gmail.com} \\
+  %% examples of more authors
+   \And
+\\
+\\
+%% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+
+\end{abstract}
+
+
+% keywords can be removed
+\keywords{Bizantine Fault Tolerance \and cryptocurrency  \and Realibility}
+
+
+\section{Introduction}
+The research in Byzantine Fault Tolerance in the last decades has a huge amount in the plethora of designs of protocols.The novels designes  are comming in the last 5 years focus in the age of blockchains.Reviews and surveys. \cite{Barborak:1993:CPF:152610.152612}\cite{Elnozahy:2002:SRP:568522.568525}\cite{Wang2019AnotherLA}
+% Please add the following required packages to your document preamble:
+% \usepackage{lscape}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{landscape}
+\begin{longtable}[c]{llll}
+\hline
+Year & Published         & Code (n >)          & Paper (msgs/round, bits/msg and steps/round)                                                                                \\ \hline
+\endfirsthead
+%
+\endhead
+%
+\hline
+\endfoot
+%
+\endlastfoot
+%
+1983 & IEEE              & -           & Randomized Byzantine Generals $\mathcal{O}(n^2),\mathcal(O)(1),(2)$ \cite{Rabin:1983:RBG:1382437.1382847}    \\
+1986 & IC             & N/A         & Reaching approximate agreement in the presence of faults  \cite{Dolev:1986:RAA:5925.5931}    \\
+1987 & IC             & BA          & Byzantine agreement protocols $\mathcal{O}(n^3),\mathcal(O)(\log{}n),(2)$ \cite{Bracha:1987:ABA:36888.36891}    \\
+1988 & JACM             & N/A         & Consensus in the presence of partial synchrony \cite{}    \\
+1991 & Journal of Cryptology             & N/A           & How to Time-stamp a Digital Document   \\
+1993 & IEEE              & -           & Randomized distributed agreement revisited $\mathcal{O}(n^2),\mathcal(O)(1),(2)$ \cite{}    \\
+1999 & OSDI              & PBFT           & Practical Byzantine Fault Tolerance     \cite{Castro:1999:PBF:296806.296824}.                                                  \\
+2000 & OSDI              & PR-PBFT        & Proactive Recovery in a Byzantine-Fault-Tolerant System   \cite{Castro:2000:PRB:1251229.1251248}                                \\
+2001 & DSN               & N/A            & Byzantine Fault Tolerance Can Be Fast    \cite{castro01byzantine}                                                  \\
+2001 & SOSP              & BASE           & Using Abstraction to Improve Fault Tolerance \cite{article}                                             \\
+2002 & TOCS              & PBFT-PR        & Practical Byzantine Fault Tolerance and Proactive Recovery                                \\
+2002 & IEEE             & SINTRA        &   Secure INtrusion-Tolerant Replication Architecture     \cite{1028897S}                        \\
+2003 & SOSP              & SAE-BFT        & Separating Agreement from Execution for Byzantine Fault Tolerant Services    \cite{Yin:2003:SAE:945445.945470}              \\
+2004 & DSN              & N/A          &   
+High Throughput Byzantine Fault Tolerance                                  \\
+2004 & OSDI              & N/A          & How to Tolerate Half Less One Byzantine Nodes in Practical Distributed Systems     2\textit{f} +1  \cite{Correia:2004:THL:1032662.1034362}                                     \\
+2005 & OSDI              & Q/U            & Fault-Scalable Byzantine Fault-Tolerant Services     \cite{Abd-El-Malek:2005:FBF:1095810.1095817}                                       \\
+2005 & SOSP              & BAR            & BAR Fault Tolerance for Cooperative Services      \cite{Aiyer:2005:BFT:1095810.1095816}                                         \\
+2006 & N/A               & FaB            & Fast Byzantine Paxos                                                                      \\
+2006 & N/A               & N/A            & Fast Byzantine Consensus                                                                  \\
+2007 & NSDI              & BFT2F          & Beyond one-third faulty replicas in Byzantine fault tolerant system                       \\
+2007 & SOSP              & CBS            & Tolerating Byzantine Faults in Database Systems using Commit Barrier Scheduling    \cite{Vandiver:2007:TBF:1294261.1294268}       \\
+
+2007 & SOSP              & Zyzzyva        & Speculative Byzantine Fault Tolerance      \cite{Kotla:2007:ZSB:1323293.1294267}                                                \\
+2007 & SOSP              & A2M            & Attested Append-Only Memory: Making Adversaries Stick to their Word     \cite{Chun:2007:AAM:1323293.1294280}                   \\
+2008 & DSN               & Prime          & Byzantine replication under attack             \cite{Prime}                                             \\
+2008 & BlogP2p          & Nakamoto Consensus       & Bitcoin: A peer-to-peer electronic cash system        \cite{Nakamoto_bitcoin:a}           \\
+2008 & ICDCN             & BuildingBlock  & The Building Blocks of Consensus    \cite{Song:2008:BBC:1785854.1785862}                                                       \\
+2008 & NSDI              & Nysiad         & Practical protocol transformation to tolerate Byzantine failures  \cite{Ho:2008:NPP:1387589.1387602}                        \\
+2008 & NSDI              & BFTSim         & BFT Protocols Under Fire     \cite{Singh:2008:BPU:1387589.1387603}                                                              \\
+2008 & OSDI              & Mencius        & Mencius: building efficient replicated state machines for WANs \cite{10.5555/1855741.1855767}                                                              \\
+2009 & NSDI              & Zeno           & Zeno: Eventually Consistent Byzantine-Fault Tolerance    \cite{Singh:2009:ZEC:1558977.1558989}                                  \\
+2009 & NSDI              & Aardvark       & Making Byzantine Fault Tolerant Systems Tolerate Byzantine Faults \cite{Clement:2009:MBF:1558977.1558988}                        \\
+2009 & NSDI              & TrInc          & TrInc: Small Trusted Hardware for Large Distributed Systems    \cite{Levin:2009:TST:1558977.1558978}                            \\
+2009 & SOSP              & UpRight        & UpRight Cluster Services    \cite{Clement:2009:UCS:1629575.1629602}                                                               \\
+2009 & SRDS              & Spin           & Spin One’s Wheels? Byzantine Fault Tolerance with a Spinning Primary      \cite{Veronese:2009:SOW:1637865.1638341}                 \\
+2010 & DSN               & Zzyzx          & Zzyzx: Scalable fault tolerance through Byzantine locking         \cite{5544297}                        \\
+2010 & DSN               & GenericBFT     & Generic construction of consensus algorithms for benign and Byzantine faults  \cite{5544299}            \\
+2010 & EuroSys           & Abstract       & The Next 700 BFT Protocols                                                                \\
+2010 & ACM           & N/A       & Reconfiguring a state machine       \cite{Lamport:2010:RSM:1753171.1753191}                                                           \\
+2010 & N/A               & ByzantinePaxos & Byzantizing Paxos by Refinement                                                           \\
+2011 & EPFL: Tech report & OBFT           & Obfuscating bft \cite{shokerBFTObfuscatedTR}                                                                          \\
+2011 & EuroSys & ODRC          & Increasing performance in byzantine fault-tolerant systems with on-demand replica consistency \cite{Distler:2011:IPB:1966445.1966455}                                                                         \\
+2011 & EuroSys           & ZZ             & ZZ and the Art of Practical BFT Execution  \textit{f} +1, 3\textit{t} + 1, 4 \cite{Wood:2011:ZAP:1966445.1966457}                                             \\
+2011 & IEEE TC           & MinBFT         & Efficient Byzantine Fault Tolerance         \cite{minbft6081855}                                               \\
+2012 & EuroSys           & CheapBFT       & CheapBFT: Resource-efficient Byzantine Fault Tolerance  \cite{cheapbft}                                   \\
+2012 &         &  N/A     & Request Batching Self-Configuration in Byzantine Fault-Tolerant Replication.         \cite{6473648}                           \\
+2012 & OPODIS            & BCR            & Byzantine chain replication  2\textit{t} +2 \cite{Renesse2012ByzantineCR}                                                             \\
+2012 & OSDI            & Spanner           & Spanner: Google’s Globally-Distributed Database \cite{180268}                                                             \\
+                                       
+2012 & OSDI            & EVE          & All about Eve: execute-verify replication for multi-core servers \cite{Kapritsos:2012:EER:2387880.2387903}
+                                                            \\
+2013 & ICDCS             & RBFT           & RBFT: Redundant Byzantine Fault Tolerance    \cite{reabundant}                                             \\
+2013 & SIGOPS              &   N/A        & Adaptive request batching for byzantine replication \cite{deSa:2013:ARB:2433140.2433149}                                             \\
+2013 & Middleware        & ClusterBFT     & Assured Cloud-Based Data Analysis with ClusterBFT   \cite{assuredinproceedings}                                      \\
+2013 & NETYS             & BFT-Sel        & BFT Selection                                                   \cite{Shoker:2013:BS:2958623.2958643}                           \\
+2014 & DSN               & BFT-SMaRt      & State machine replication for the masses with BFT-SMART    \cite{Bessani:2014:SMR:2671853.2672428}                               \\
+2014 & ICSC              & N/A            & Byzantine Fault Tolerance for Services with Commutative Operations    \cite{Chai:2014:BFT:2680847.2681538}                     \\
+2014 & N/A               & Tangaroa       & Tangaroa: a Byzantine Fault Tolerant Raft   \cite{Copeland2014TangaroaA}                                               \\
+2014 & OPODIS            & BChain         & BChain: Byzantine replication with high throughput and embedded reconfiguration  \cite{10.1007/978-3-319-14472-6_7}           \\
+2014 & SRDS              & ByzID          & ByzID: Byzantine Fault Tolerance from Intrusion Detection \cite{Duan:2014:BBF:2707675.2707823}                                \\
+2015 & ACM SIGOPS        & BFT-batch      & Cost-Aware Request Batching for Byzantine Fault-Tolerant Replication                                        \\
+2015 & DSN               & Refined        & Consensus Refined    \cite{7266867}                                                                      \\
+2015 & EuroSys           & VFT:VFT-SMaRt  & Visigoth fault tolerance     \cite{Porto:2015:VFT:2741948.2741979}                                                               \\
+2015 & IEEE TDSC         & hBFT           & hBFT: Speculative Byzantine Fault Tolerance with Minimum Cost  \cite{6775264}                            \\
+2015 & Middleware        & COP            & Consensus-Oriented Parallelization: How to Earn Your First Million   \cite{Behl:2015:CPE:2814576.2814800}                      \\
+2016 & CCS               & Elastico       & A Secure Sharding Protocol For Open Blockchains \cite{Luu:2016:SSP:2976749.2978389}                                          \\
+2016 & CCS               & HoneyBadger    & The Honey Badger of BFT Protocols   \cite{Miller:2016:HBB:2976749.2978399}                                                       \\
+2016 & EDCC              & SAREK          & SAREK: Optimistic Parallel Ordering in Byzantine Fault Tolerance \cite{7780347}                         \\
+
+2016 & N/A               & Tendermint     & Tendermint: Byzantine Fault Tolerance in the Age of Blockchains      \cite{Buchman2016TendermintBF}                     \\
+2016 & N/A               & BVP            & BVP: Byzantine Vertical Paxos                                                             \\
+2016 & NDSS              & RSCoin         & Centrally Banked Cryptocurrencies   \cite{DBLP:journals/corr/DanezisM15}                                                      \\
+2016 & OSDI              & XFT:XPaxos     & XFT: Practical Fault Tolerance beyond Crashes     \cite{Liu:2016:XPF:3026877.3026915}                                         \\
+2016 & USENIX Security   & ByzCoin        & Enhancing Bitcoin Security and Performance with Strong Consistency via Collective Signing \\
+2017 & EDCC              & Omada          & Scalable Byzantine Fault Tolerance on Heterogeneous Servers     \cite{8123550}                          \\
+2017 & EuroSys           & Hybster        & Hybrids on Steroids: SGX-Based High Performance BFT              \cite{Behl:2017:HSS:3064176.3064213}                        \\
+2017 & N/A               & Guru           & Guru: Universal Reputation Module for Distributed Consensus Protocols                     \\
+2017 & aXiv              & Casper     &Casper the Friendly Finality Gadget   \cite{DBLP:journals/corr/abs-1710-09437}                         \\
+2017 & OPODIS            & Solida         & Solida: A Blockchain Protocol Based on Reconfigurable Byzantine Consensus   \cite{cryptoeprint:2017:1118}              \\
+2017 & SOSP              & Algorand       & Scaling Byzantine Agreements for Cryptocurrencies \cite{Gilad:2017:ASB:3132747.3132757}                                        \\
+
+2018 & CCS               & RapidChain     & RapidChain: Scaling Blockchain via Full Sharding       \cite{cryptoeprint:2018:460}                                   \\
+2018 & DSN               & Troxy          & Troxy: Transparent Access to Byzantine Fault-Tolerant Systems      \cite{8416471}                         \\
+2018 & ESOP              & Velisarios     & Velisarios: Byzantine Fault-Tolerant Protocols Powered by Coq \cite{10.1007/978-3-319-89884-1_22}                            \\
+2018 & IEEE S\&P         & OmniLedger     & OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding \cite{8418625}                       \\
+2018 & NCA               & DBFT           & DBFT: Efficient Leaderless Byzantine Consensus and its Application to Blockchains         \\
+2018 & NDSS              & Chainspace     & Chainspace: A Sharded Smart Contracts Platform                  \cite{DBLP:journals/corr/abs-1708-03778}                           \\
+2018 & SAC               & DynBFT         & Dynamic Adaptation of Byzantine Consensus Protocols     \cite{Carvalho:2018:DAB:3167132.3167179}                                  \\
+2018 & SRDS              & Fireplug       & Policy-Based Adaptation of a Byzantine Fault Tolerant Distributed Graph Database  \cite{8613954}         \\
+2018 & SRDS              & Ouroboros      & Ouroboros Genesis: Composable Proof-of-Stake Blockchains with Dynamic Availability \cite{Badertscher:2018:OGC:3243734.3243848}     \\
+2018 & EuroCrypt         & PODC           & Thunderella: Blockchains with Optimistic Instant Confirmation     \cite{10.1007/978-3-319-78375-8_1}                        \\
+2019 & CCS               & BEAT           & BEAT: Asynchronous BFT Made Practical \cite{Duan:2018:BAB:3243734.3243812}                                                     \\
+2019 & ODIS              & Monoxide       & Monoxide: Scale Out Blockchain with Asynchronous Consensus Zones    \cite{227661}                                          \\
+2019 & ICDCS             & ezBFT          & ezBFT: Decentralizing Byzantine Fault-Tolerant State Machine Replication   \cite{DBLP:journals/corr/abs-1904-06023}               \\
+2019 & ICDCS             & QuorumSelBFT   & Quorum Selection for Byzantine Fault Tolerance    \cite{quorum20198884792}                                         \\
+2019 & IEEE ToC          & FastBFT        & Scalable byzantine consensus via hardware-assisted secret sharing      \cite{8419336}                   \\
+2019 & N/A               & SACZyzzyva     & Making Speculative BFT Resilient with Trusted Monotonic Counters \cite{DBLP:journals/corr/abs-1905-10255}                         \\
+2019 & N/A               & SBFT           & SBFT: a Scalable and Decentralized Trust Infrastructure      \cite{DBLP:journals/corr/abs-1905-10255}                              \\
+2019 &    OPODIS             & FairLedger           &  FairLedger: A Fair Blockchain Protocol for Financial Institutions   \cite{DBLP:journals/corr/abs-1906-03819}                               \\
+2019 & N/A               & FBFT           & Flexible Byzantine Fault Tolerance     \cite{malkhi2019flexible}                                                    \\
+2019 & PODC              & HotStuff       & HotStuff: BFT Consensus with Linearity and Responsiveness    \cite{Yin2019HotStuffBC}                               \\
+2019 &  N/A            & Avalanche      &   Scalable and Probabilistic Leaderless BFT Consensus through Metastability   \cite{snowDBLP:journals/corr/abs-1906-08936}                    \\\hline
+\end{longtable}
+\end{landscape}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage{lscape}
+\begin{landscape}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\hline
+Year & Published         & Code           & Paper                                                                                     \\ \hline
+1999 & OSDI              & PBFT           & Practical Byzantine Fault Tolerance                                                       \\
+2000 & OSDI              & PR-PBFT        & Proactive Recovery in a Byzantine-Fault-Tolerant System                                   \\
+2001 & DSN               & N/A            & Byzantine Fault Tolerance Can Be Fast                                                     \\
+2001 & SOSP              & BASE           & Using Abstraction to Improve Fault Tolerance                                              \\
+2002 & TOCS              & PBFT-PR        & Practical Byzantine Fault Tolerance and Proactive Recovery                                \\
+2003 & SOSP              & SAE-BFT        & Separating Agreement from Execution for Byzantine Fault Tolerant Services                 \\
+2005 & OSDI              & Q/U            & Fault-Scalable Byzantine Fault-Tolerant Services                                          \\
+2005 & SOSP              & BAR            & BAR Fault Tolerance for Cooperative Services                                              \\
+2006 & N/A               & FaB            & Fast Byzantine Paxos                                                                      \\
+2006 & N/A               & N/A            & Fast Byzantine Consensus                                                                  \\
+2007 & NSDI              & BFT2F          & Beyond one-third faulty replicas in Byzantine fault tolerant system                       \\
+2007 & SOSP              & CBS            & Tolerating Byzantine Faults in Database Systems using Commit Barrier Scheduling           \\
+2007 & SOSP              & ErasureBFT     & Low-Overhead Byzantine Fault-Tolerant Storage                                             \\
+2007 & SOSP              & Zyzzyva        & Speculative Byzantine Fault Tolerance                                                     \\
+2007 & SOSP              & A2M            & Attested Append-Only Memory: Making Adversaries Stick to their Word                       \\
+2008 & DSN               & Prime          & Byzantine replication under attack                                                        \\
+2008 & ICDCN             & BuildingBlock  & The Building Blocks of Consensus                                                          \\
+2008 & NSDI              & Nysiad         & Practical protocol transformation to tolerate Byzantine failures                          \\
+2008 & NSDI              & BFTSim         & BFT Protocols Under Fire                                                                  \\
+2009 & NSDI              & Zeno           & Zeno: Eventually Consistent Byzantine-Fault Tolerance                                     \\
+2009 & NSDI              & Aardvark       & Making Byzantine Fault Tolerant Systems Tolerate Byzantine Faults                         \\
+2009 & NSDI              & TrInc          & TrInc: Small Trusted Hardware for Large Distributed Systems                               \\
+2009 & SOSP              & UpRight        & UpRight Cluster Services                                                                  \\
+2009 & SRDS              & Spin           & Spin One’s Wheels? Byzantine Fault Tolerance with a Spinning Primary                      \\
+2010 & DSN               & Zzyzx          & Zzyzx: Scalable fault tolerance through Byzantine locking                                 \\
+2010 & DSN               & GenericBFT     & Generic construction of consensus algorithms for benign and Byzantine faults              \\
+2010 & EuroSys           & Abstract       & The Next 700 BFT Protocols                                                                \\
+2010 & N/A               & ByzantinePaxos & Byzantizing Paxos by Refinement                                                           \\
+2011 & EPFL: Tech report & OBFT           & Obfuscating bft                                                                           \\
+2011 & EuroSys           & ZZ             & ZZ and the Art of Practical BFT Execution                                                 \\
+2011 & IEEE TC           & MinBFT         & Efficient Byzantine Fault Tolerance                                                       \\
+2012 & EuroSys           & CheapBFT       & CheapBFT: Resource-efficient Byzantine Fault Tolerance                                    \\
+2012 & OPODIS            & BCR            & Byzantine chain replication                                                               \\
+2013 & ICDCS             & RBFT           & RBFT: Redundant Byzantine Fault Tolerance                                                 \\
+2013 & Middleware        & ClusterBFT     & Assured Cloud-Based Data Analysis with ClusterBFT                                         \\
+2013 & NETYS             & BFT-Sel        & BFT Selection                                                                             \\
+2014 & DSN               & BFT-SMaRt      & State machine replication for the masses with BFT-SMART                                   \\
+2014 & ICSC              & N/A            & Byzantine Fault Tolerance for Services with Commutative Operations                        \\
+2014 & N/A               & Tangaroa       & Tangaroa: a Byzantine Fault Tolerant Raft                                                 \\
+2014 & OPODIS            & BChain         & BChain: Byzantine replication with high throughput and embedded reconfiguration           \\
+2014 & SRDS              & ByzID          & ByzID: Byzantine Fault Tolerance from Intrusion Detection                                 \\
+2015 & ACM SIGOPS        & BFT-batch      & Adaptive request batching for byzantine replication                                       \\
+2015 & DSN               & Refined        & Consensus Refined                                                                         \\
+2015 & IEEE TDSC         & hBFT           & hBFT: Speculative Byzantine Fault Tolerance with Minimum Cost                             \\
+2015 & Middleware        & COP            & Consensus-Oriented Parallelization: How to Earn Your First Million                        \\
+2016 & CCS               & Elastico       & A Secure Sharding Protocol For Open Blockchains                                           \\
+2016 & CCS               & HoneyBadger    & The Honey Badger of BFT Protocols                                                         \\
+2016 & EDCC              & SAREK          & SAREK: Optimistic Parallel Ordering in Byzantine Fault Tolerance                          \\
+2016 & EuroSys           & VFT:VFT-SMaRt  & Visigoth fault tolerance                                                                  \\
+2016 & N/A               & Tendermint     & Tendermint: Byzantine Fault Tolerance in the Age of Blockchains                           \\
+2016 & N/A               & BVP            & BVP: Byzantine Vertical Paxos                                                             \\
+2016 & NDSS              & RSCoin         & Centrally Banked Cryptocurrencies                                                         \\
+2016 & OSDI              & XFT:XPaxos     & XFT: Practical Fault Tolerance beyond Crashes                                             \\
+2016 & USENIX Security   & ByzCoin        & Enhancing Bitcoin Security and Performance with Strong Consistency via Collective Signing \\
+2017 & EDCC              & Omada          & Scalable Byzantine Fault Tolerance on Heterogeneous Servers                               \\
+2017 & EuroSys           & Hybster        & Hybrids on Steroids: SGX-Based High Performance BFT                                       \\
+2017 & N/A               & Guru           & Guru: Universal Reputation Module for Distributed Consensus Protocols                     \\
+2017 & OPODIS            & Solida         & Solida: A Blockchain Protocol Based on Reconfigurable Byzantine Consensus                 \\
+2017 & SOSP              & Algorand       & Scaling Byzantine Agreements for Cryptocurrencies                                         \\
+2018 & CCS               & RapidChain     & RapidChain: Scaling Blockchain via Full Sharding                                          \\
+2018 & DSN               & Troxy          & Troxy: Transparent Access to Byzantine Fault-Tolerant Systems                             \\
+2018 & ESOP              & Velisarios     & Velisarios: Byzantine Fault-Tolerant Protocols Powered by Coq                             \\
+2018 & IEEE S\&P         & OmniLedger     & OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding                        \\
+2018 & NCA               & DBFT           & DBFT: Efficient Leaderless Byzantine Consensus and its Application to Blockchains         \\
+2018 & NDSS              & Chainspace     & Chainspace: A Sharded Smart Contracts Platform                                            \\
+2018 & SAC               & DynBFT         & Dynamic Adaptation of Byzantine Consensus Protocols                                       \\
+2018 & SRDS              & Fireplug       & Policy-Based Adaptation of a Byzantine Fault Tolerant Distributed Graph Database          \\
+2018 & EuroCrypt         & PODC           & Thunderella: Blockchains with Optimistic Instant Confirmation                             \\
+2019 & CCS               & BEAT           & BEAT: Asynchronous BFT Made Practical                                                     \\
+2019 & ICDCS             & ezBFT          & ezBFT: Decentralizing Byzantine Fault-Tolerant State Machine Replication                  \\
+2019 & ICDCS             & QuorumSelBFT   & Quorum Selection for Byzantine Fault Tolerance                                            \\
+2019 & IEEE ToC          & FastBFT        & Scalable byzantine consensus via hardware-assisted secret sharing                         \\
+2019 & N/A               & SACZyzzyva     & Making Speculative BFT Resilient with Trusted Monotonic Counters                          \\
+2019 & N/A               & SBFT           & SBFT: a Scalable and Decentralized Trust Infrastructure                                   \\
+2019 & N/A               & FBFT           & Flexible Byzantine Fault Tolerance                                                        \\
+2019 & PODC              & HotStuff       & HotStuff: BFT Consensus with Linearity and Responsiveness                                 \\ \hline
+\end{tabular}%
+}
+\end{table}
+\end{landscape}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage{lscape}
+\begin{landscape}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll|l|l|l|}
+\hline
+Year & Published         & Code (n \textgreater{}) & Paper (Signatures)                                                                        & msgs/round & bits/msg & stepts/round \\ \hline
+1999 & OSDI              & PBFT                    & Practical Byzantine Fault Tolerance                                                       &            &          &              \\ \cline{5-7} 
+2000 & OSDI              & PR-PBFT                 & Proactive Recovery in a Byzantine-Fault-Tolerant System                                   &            &          &              \\ \cline{5-7} 
+2001 & DSN               & N/A                     & Byzantine Fault Tolerance Can Be Fast                                                     &            &          &              \\ \cline{5-7} 
+2001 & SOSP              & BASE                    & Using Abstraction to Improve Fault Tolerance                                              &            &          &              \\ \cline{5-7} 
+2002 & TOCS              & PBFT-PR                 & Practical Byzantine Fault Tolerance and Proactive Recovery                                &            &          &              \\ \cline{5-7} 
+2003 & SOSP              & SAE-BFT                 & Separating Agreement from Execution for Byzantine Fault Tolerant Services                 &            &          &              \\ \cline{5-7} 
+2005 & OSDI              & Q/U                     & Fault-Scalable Byzantine Fault-Tolerant Services                                          &            &          &              \\ \cline{5-7} 
+2005 & SOSP              & BAR                     & BAR Fault Tolerance for Cooperative Services                                              &            &          &              \\ \cline{5-7} 
+2006 & N/A               & FaB                     & Fast Byzantine Paxos                                                                      &            &          &              \\ \cline{5-7} 
+2006 & N/A               & N/A                     & Fast Byzantine Consensus                                                                  &            &          &              \\ \cline{5-7} 
+2007 & NSDI              & BFT2F                   & Beyond one-third faulty replicas in Byzantine fault tolerant system                       &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & CBS                     & Tolerating Byzantine Faults in Database Systems using Commit Barrier Scheduling           &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & ErasureBFT              & Low-Overhead Byzantine Fault-Tolerant Storage                                             &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & Zyzzyva                 & Speculative Byzantine Fault Tolerance                                                     &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & A2M                     & Attested Append-Only Memory: Making Adversaries Stick to their Word                       &            &          &              \\ \cline{5-7} 
+2008 & DSN               & Prime                   & Byzantine replication under attack                                                        &            &          &              \\ \cline{5-7} 
+2008 & ICDCN             & BuildingBlock           & The Building Blocks of Consensus                                                          &            &          &              \\ \cline{5-7} 
+2008 & NSDI              & Nysiad                  & Practical protocol transformation to tolerate Byzantine failures                          &            &          &              \\ \cline{5-7} 
+2008 & NSDI              & BFTSim                  & BFT Protocols Under Fire                                                                  &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & Zeno                    & Zeno: Eventually Consistent Byzantine-Fault Tolerance                                     &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & Aardvark                & Making Byzantine Fault Tolerant Systems Tolerate Byzantine Faults                         &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & TrInc                   & TrInc: Small Trusted Hardware for Large Distributed Systems                               &            &          &              \\ \cline{5-7} 
+2009 & SOSP              & UpRight                 & UpRight Cluster Services                                                                  &            &          &              \\ \cline{5-7} 
+2009 & SRDS              & Spin                    & Spin One’s Wheels? Byzantine Fault Tolerance with a Spinning Primary                      &            &          &              \\ \cline{5-7} 
+2010 & DSN               & Zzyzx                   & Zzyzx: Scalable fault tolerance through Byzantine locking                                 &            &          &              \\ \cline{5-7} 
+2010 & DSN               & GenericBFT              & Generic construction of consensus algorithms for benign and Byzantine faults              &            &          &              \\ \cline{5-7} 
+2010 & EuroSys           & Abstract                & The Next 700 BFT Protocols                                                                &            &          &              \\ \cline{5-7} 
+2010 & N/A               & ByzantinePaxos          & Byzantizing Paxos by Refinement                                                           &            &          &              \\ \cline{5-7} 
+2011 & EPFL: Tech report & OBFT                    & Obfuscating bft                                                                           &            &          &              \\ \cline{5-7} 
+2011 & EuroSys           & ZZ                      & ZZ and the Art of Practical BFT Execution                                                 &            &          &              \\ \cline{5-7} 
+2011 & IEEE TC           & MinBFT                  & Efficient Byzantine Fault Tolerance                                                       &            &          &              \\ \cline{5-7} 
+2012 & EuroSys           & CheapBFT                & CheapBFT: Resource-efficient Byzantine Fault Tolerance                                    &            &          &              \\ \cline{5-7} 
+2012 & OPODIS            & BCR                     & Byzantine chain replication                                                               &            &          &              \\ \cline{5-7} 
+2013 & ICDCS             & RBFT                    & RBFT: Redundant Byzantine Fault Tolerance                                                 &            &          &              \\ \cline{5-7} 
+2013 & Middleware        & ClusterBFT              & Assured Cloud-Based Data Analysis with ClusterBFT                                         &            &          &              \\ \cline{5-7} 
+2013 & NETYS             & BFT-Sel                 & BFT Selection                                                                             &            &          &              \\ \cline{5-7} 
+2014 & DSN               & BFT-SMaRt               & State machine replication for the masses with BFT-SMART                                   &            &          &              \\ \cline{5-7} 
+2014 & ICSC              & N/A                     & Byzantine Fault Tolerance for Services with Commutative Operations                        &            &          &              \\ \cline{5-7} 
+2014 & N/A               & Tangaroa                & Tangaroa: a Byzantine Fault Tolerant Raft                                                 &            &          &              \\ \cline{5-7} 
+2014 & OPODIS            & BChain                  & BChain: Byzantine replication with high throughput and embedded reconfiguration           &            &          &              \\ \cline{5-7} 
+2014 & SRDS              & ByzID                   & ByzID: Byzantine Fault Tolerance from Intrusion Detection                                 &            &          &              \\ \cline{5-7} 
+2015 & ACM SIGOPS        & BFT-batch               & Adaptive request batching for byzantine replication                                       &            &          &              \\ \cline{5-7} 
+2015 & DSN               & Refined                 & Consensus Refined                                                                         &            &          &              \\ \cline{5-7} 
+2015 & IEEE TDSC         & hBFT                    & hBFT: Speculative Byzantine Fault Tolerance with Minimum Cost                             &            &          &              \\ \cline{5-7} 
+2015 & Middleware        & COP                     & Consensus-Oriented Parallelization: How to Earn Your First Million                        &            &          &              \\ \cline{5-7} 
+2016 & CCS               & Elastico                & A Secure Sharding Protocol For Open Blockchains                                           &            &          &              \\ \cline{5-7} 
+2016 & CCS               & HoneyBadger             & The Honey Badger of BFT Protocols                                                         &            &          &              \\ \cline{5-7} 
+2016 & EDCC              & SAREK                   & SAREK: Optimistic Parallel Ordering in Byzantine Fault Tolerance                          &            &          &              \\ \cline{5-7} 
+2016 & EuroSys           & VFT:VFT-SMaRt           & Visigoth fault tolerance                                                                  &            &          &              \\ \cline{5-7} 
+2016 & N/A               & Tendermint              & Tendermint: Byzantine Fault Tolerance in the Age of Blockchains                           &            &          &              \\ \cline{5-7} 
+2016 & N/A               & BVP                     & BVP: Byzantine Vertical Paxos                                                             &            &          &              \\ \cline{5-7} 
+2016 & NDSS              & RSCoin                  & Centrally Banked Cryptocurrencies                                                         &            &          &              \\ \cline{5-7} 
+2016 & OSDI              & XFT:XPaxos              & XFT: Practical Fault Tolerance beyond Crashes                                             &            &          &              \\ \cline{5-7} 
+2016 & USENIX Security   & ByzCoin                 & Enhancing Bitcoin Security and Performance with Strong Consistency via Collective Signing &            &          &              \\ \cline{5-7} 
+2017 & EDCC              & Omada                   & Scalable Byzantine Fault Tolerance on Heterogeneous Servers                               &            &          &              \\ \cline{5-7} 
+2017 & EuroSys           & Hybster                 & Hybrids on Steroids: SGX-Based High Performance BFT                                       &            &          &              \\ \cline{5-7} 
+2017 & N/A               & Guru                    & Guru: Universal Reputation Module for Distributed Consensus Protocols                     &            &          &              \\ \cline{5-7} 
+2017 & OPODIS            & Solida                  & Solida: A Blockchain Protocol Based on Reconfigurable Byzantine Consensus                 &            &          &              \\ \cline{5-7} 
+2017 & SOSP              & Algorand                & Scaling Byzantine Agreements for Cryptocurrencies                                         &            &          &              \\ \cline{5-7} 
+2018 & CCS               & RapidChain              & RapidChain: Scaling Blockchain via Full Sharding                                          &            &          &              \\ \cline{5-7} 
+2018 & DSN               & Troxy                   & Troxy: Transparent Access to Byzantine Fault-Tolerant Systems                             &            &          &              \\ \cline{5-7} 
+2018 & ESOP              & Velisarios              & Velisarios: Byzantine Fault-Tolerant Protocols Powered by Coq                             &            &          &              \\ \cline{5-7} 
+2018 & IEEE S\&P         & OmniLedger              & OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding                        &            &          &              \\ \cline{5-7} 
+2018 & NCA               & DBFT                    & DBFT: Efficient Leaderless Byzantine Consensus and its Application to Blockchains         &            &          &              \\ \cline{5-7} 
+2018 & NDSS              & Chainspace              & Chainspace: A Sharded Smart Contracts Platform                                            &            &          &              \\ \cline{5-7} 
+2018 & SAC               & DynBFT                  & Dynamic Adaptation of Byzantine Consensus Protocols                                       &            &          &              \\ \cline{5-7} 
+2018 & SRDS              & Fireplug                & Policy-Based Adaptation of a Byzantine Fault Tolerant Distributed Graph Database          &            &          &              \\ \cline{5-7} 
+2018 & EuroCrypt         & PODC                    & Thunderella: Blockchains with Optimistic Instant Confirmation                             &            &          &              \\ \cline{5-7} 
+2019 & CCS               & BEAT                    & BEAT: Asynchronous BFT Made Practical                                                     &            &          &              \\ \cline{5-7} 
+2019 & ICDCS             & ezBFT                   & ezBFT: Decentralizing Byzantine Fault-Tolerant State Machine Replication                  &            &          &              \\ \cline{5-7} 
+2019 & ICDCS             & QuorumSelBFT            & Quorum Selection for Byzantine Fault Tolerance                                            &            &          &              \\ \cline{5-7} 
+2019 & IEEE ToC          & FastBFT                 & Scalable byzantine consensus via hardware-assisted secret sharing                         &            &          &              \\ \cline{5-7} 
+2019 & N/A               & SACZyzzyva              & Making Speculative BFT Resilient with Trusted Monotonic Counters                          &            &          &              \\ \cline{5-7} 
+2019 & N/A               & SBFT                    & SBFT: a Scalable and Decentralized Trust Infrastructure                                   &            &          &              \\ \cline{5-7} 
+2019 & N/A               & FBFT                    & Flexible Byzantine Fault Tolerance                                                        &            &          &              \\ \cline{5-7} 
+2019 & PODC              & HotStuff                & HotStuff: BFT Consensus with Linearity and Responsiveness                                 &            &          &              \\ \hline
+\end{tabular}%
+}
+\end{table}
+\end{landscape}
+% Please add the following required packages to your document preamble:
+% \usepackage{lscape}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{landscape}
+\begin{longtable}[c]{llll|l|l|l|}
+\hline
+Year & Published         & Code (n \textgreater{}) & Paper (Signatures)                                                                        & msgs/round & bits/msg & stepts/round \\ \hline
+\endfirsthead
+%
+\endhead
+%
+1999 & OSDI              & PBFT                    & Practical Byzantine Fault Tolerance                                                       &            &          &              \\ \cline{5-7} 
+2000 & OSDI              & PR-PBFT                 & Proactive Recovery in a Byzantine-Fault-Tolerant System                                   &            &          &              \\ \cline{5-7} 
+2001 & DSN               & N/A                     & Byzantine Fault Tolerance Can Be Fast                                                     &            &          &              \\ \cline{5-7} 
+2001 & SOSP              & BASE                    & Using Abstraction to Improve Fault Tolerance                                              &            &          &              \\ \cline{5-7} 
+2002 & TOCS              & PBFT-PR                 & Practical Byzantine Fault Tolerance and Proactive Recovery                                &            &          &              \\ \cline{5-7} 
+2003 & SOSP              & SAE-BFT                 & Separating Agreement from Execution for Byzantine Fault Tolerant Services                 &            &          &              \\ \cline{5-7} 
+2005 & OSDI              & Q/U                     & Fault-Scalable Byzantine Fault-Tolerant Services                                          &            &          &              \\ \cline{5-7} 
+2005 & SOSP              & BAR                     & BAR Fault Tolerance for Cooperative Services                                              &            &          &              \\ \cline{5-7} 
+2006 & N/A               & FaB                     & Fast Byzantine Paxos                                                                      &            &          &              \\ \cline{5-7} 
+2006 & N/A               & N/A                     & Fast Byzantine Consensus                                                                  &            &          &              \\ \cline{5-7} 
+2007 & NSDI              & BFT2F                   & Beyond one-third faulty replicas in Byzantine fault tolerant system                       &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & CBS                     & Tolerating Byzantine Faults in Database Systems using Commit Barrier Scheduling           &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & ErasureBFT              & Low-Overhead Byzantine Fault-Tolerant Storage                                             &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & Zyzzyva                 & Speculative Byzantine Fault Tolerance                                                     &            &          &              \\ \cline{5-7} 
+2007 & SOSP              & A2M                     & Attested Append-Only Memory: Making Adversaries Stick to their Word                       &            &          &              \\ \cline{5-7} 
+2008 & DSN               & Prime                   & Byzantine replication under attack                                                        &            &          &              \\ \cline{5-7} 
+2008 & ICDCN             & BuildingBlock           & The Building Blocks of Consensus                                                          &            &          &              \\ \cline{5-7} 
+2008 & NSDI              & Nysiad                  & Practical protocol transformation to tolerate Byzantine failures                          &            &          &              \\ \cline{5-7} 
+2008 & NSDI              & BFTSim                  & BFT Protocols Under Fire                                                                  &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & Zeno                    & Zeno: Eventually Consistent Byzantine-Fault Tolerance                                     &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & Aardvark                & Making Byzantine Fault Tolerant Systems Tolerate Byzantine Faults                         &            &          &              \\ \cline{5-7} 
+2009 & NSDI              & TrInc                   & TrInc: Small Trusted Hardware for Large Distributed Systems                               &            &          &              \\ \cline{5-7} 
+2009 & SOSP              & UpRight                 & UpRight Cluster Services                                                                  &            &          &              \\ \cline{5-7} 
+2009 & SRDS              & Spin                    & Spin One’s Wheels? Byzantine Fault Tolerance with a Spinning Primary                      &            &          &              \\ \cline{5-7} 
+2010 & DSN               & Zzyzx                   & Zzyzx: Scalable fault tolerance through Byzantine locking                                 &            &          &              \\ \cline{5-7} 
+2010 & DSN               & GenericBFT              & Generic construction of consensus algorithms for benign and Byzantine faults              &            &          &              \\ \cline{5-7} 
+2010 & EuroSys           & Abstract                & The Next 700 BFT Protocols                                                                &            &          &              \\ \cline{5-7} 
+2010 & N/A               & ByzantinePaxos          & Byzantizing Paxos by Refinement                                                           &            &          &              \\ \cline{5-7} 
+2011 & EPFL: Tech report & OBFT                    & Obfuscating bft                                                                           &            &          &              \\ \cline{5-7} 
+2011 & EuroSys           & ZZ                      & ZZ and the Art of Practical BFT Execution                                                 &            &          &              \\ \cline{5-7} 
+2011 & IEEE TC           & MinBFT                  & Efficient Byzantine Fault Tolerance                                                       &            &          &              \\ \cline{5-7} 
+2012 & EuroSys           & CheapBFT                & CheapBFT: Resource-efficient Byzantine Fault Tolerance                                    &            &          &              \\ \cline{5-7} 
+2012 & OPODIS            & BCR                     & Byzantine chain replication                                                               &            &          &              \\ \cline{5-7} 
+2013 & ICDCS             & RBFT                    & RBFT: Redundant Byzantine Fault Tolerance                                                 &            &          &              \\ \cline{5-7} 
+2013 & Middleware        & ClusterBFT              & Assured Cloud-Based Data Analysis with ClusterBFT                                         &            &          &              \\ \cline{5-7} 
+2013 & NETYS             & BFT-Sel                 & BFT Selection                                                                             &            &          &              \\ \cline{5-7} 
+2014 & DSN               & BFT-SMaRt               & State machine replication for the masses with BFT-SMART                                   &            &          &              \\ \cline{5-7} 
+2014 & ICSC              & N/A                     & Byzantine Fault Tolerance for Services with Commutative Operations                        &            &          &              \\ \cline{5-7} 
+2014 & N/A               & Tangaroa                & Tangaroa: a Byzantine Fault Tolerant Raft                                                 &            &          &              \\ \cline{5-7} 
+2014 & OPODIS            & BChain                  & BChain: Byzantine replication with high throughput and embedded reconfiguration           &            &          &              \\ \cline{5-7} 
+2014 & SRDS              & ByzID                   & ByzID: Byzantine Fault Tolerance from Intrusion Detection                                 &            &          &              \\ \cline{5-7} 
+2015 & ACM SIGOPS        & BFT-batch               & Adaptive request batching for byzantine replication                                       &            &          &              \\ \cline{5-7} 
+2015 & DSN               & Refined                 & Consensus Refined                                                                         &            &          &              \\ \cline{5-7} 
+2015 & IEEE TDSC         & hBFT                    & hBFT: Speculative Byzantine Fault Tolerance with Minimum Cost                             &            &          &              \\ \cline{5-7} 
+2015 & Middleware        & COP                     & Consensus-Oriented Parallelization: How to Earn Your First Million                        &            &          &              \\ \cline{5-7} 
+2016 & CCS               & Elastico                & A Secure Sharding Protocol For Open Blockchains                                           &            &          &              \\ \cline{5-7} 
+2016 & CCS               & HoneyBadger             & The Honey Badger of BFT Protocols                                                         &            &          &              \\ \cline{5-7} 
+2016 & EDCC              & SAREK                   & SAREK: Optimistic Parallel Ordering in Byzantine Fault Tolerance                          &            &          &              \\ \cline{5-7} 
+2016 & EuroSys           & VFT:VFT-SMaRt           & Visigoth fault tolerance                                                                  &            &          &              \\ \cline{5-7} 
+2016 & N/A               & Tendermint              & Tendermint: Byzantine Fault Tolerance in the Age of Blockchains                           &            &          &              \\ \cline{5-7} 
+2016 & N/A               & BVP                     & BVP: Byzantine Vertical Paxos                                                             &            &          &              \\ \cline{5-7} 
+2016 & NDSS              & RSCoin                  & Centrally Banked Cryptocurrencies                                                         &            &          &              \\ \cline{5-7} 
+2016 & OSDI              & XFT:XPaxos              & XFT: Practical Fault Tolerance beyond Crashes                                             &            &          &              \\ \cline{5-7} 
+2016 & USENIX Security   & ByzCoin                 & Enhancing Bitcoin Security and Performance with Strong Consistency via Collective Signing &            &          &              \\ \cline{5-7} 
+2017 & EDCC              & Omada                   & Scalable Byzantine Fault Tolerance on Heterogeneous Servers                               &            &          &              \\ \cline{5-7} 
+2017 & EuroSys           & Hybster                 & Hybrids on Steroids: SGX-Based High Performance BFT                                       &            &          &              \\ \cline{5-7} 
+2017 & N/A               & Guru                    & Guru: Universal Reputation Module for Distributed Consensus Protocols                     &            &          &              \\ \cline{5-7} 
+2017 & OPODIS            & Solida                  & Solida: A Blockchain Protocol Based on Reconfigurable Byzantine Consensus                 &            &          &              \\ \cline{5-7} 
+2017 & SOSP              & Algorand                & Scaling Byzantine Agreements for Cryptocurrencies                                         &            &          &              \\ \cline{5-7} 
+2018 & CCS               & RapidChain              & RapidChain: Scaling Blockchain via Full Sharding                                          &            &          &              \\ \cline{5-7} 
+2018 & DSN               & Troxy                   & Troxy: Transparent Access to Byzantine Fault-Tolerant Systems                             &            &          &              \\ \cline{5-7} 
+2018 & ESOP              & Velisarios              & Velisarios: Byzantine Fault-Tolerant Protocols Powered by Coq                             &            &          &              \\ \cline{5-7} 
+2018 & IEEE S\&P         & OmniLedger              & OmniLedger: A Secure, Scale-Out, Decentralized Ledger via Sharding                        &            &          &              \\ \cline{5-7} 
+2018 & NCA               & DBFT                    & DBFT: Efficient Leaderless Byzantine Consensus and its Application to Blockchains         &            &          &              \\ \cline{5-7} 
+2018 & NDSS              & Chainspace              & Chainspace: A Sharded Smart Contracts Platform                                            &            &          &              \\ \cline{5-7} 
+2018 & SAC               & DynBFT                  & Dynamic Adaptation of Byzantine Consensus Protocols                                       &            &          &              \\ \cline{5-7} 
+2018 & SRDS              & Fireplug                & Policy-Based Adaptation of a Byzantine Fault Tolerant Distributed Graph Database          &            &          &              \\ \cline{5-7} 
+2018 & EuroCrypt         & PODC                    & Thunderella: Blockchains with Optimistic Instant Confirmation                             &            &          &              \\ \cline{5-7} 
+2019 & CCS               & BEAT                    & BEAT: Asynchronous BFT Made Practical                                                     &            &          &              \\ \cline{5-7} 
+2019 & ICDCS             & ezBFT                   & ezBFT: Decentralizing Byzantine Fault-Tolerant State Machine Replication                  &            &          &              \\ \cline{5-7} 
+2019 & ICDCS             & QuorumSelBFT            & Quorum Selection for Byzantine Fault Tolerance                                            &            &          &              \\ \cline{5-7} 
+2019 & IEEE ToC          & FastBFT                 & Scalable byzantine consensus via hardware-assisted secret sharing                         &            &          &              \\ \cline{5-7} 
+2019 & N/A               & SACZyzzyva              & Making Speculative BFT Resilient with Trusted Monotonic Counters                          &            &          &              \\ \cline{5-7} 
+2019 & N/A               & SBFT                    & SBFT: a Scalable and Decentralized Trust Infrastructure                                   &            &          &              \\ \cline{5-7} 
+2019 & N/A               & FBFT                    & Flexible Byzantine Fault Tolerance                                                        &            &          &              \\ \cline{5-7} 
+2019 & PODC              & HotStuff                & HotStuff: BFT Consensus with Linearity and Responsiveness                                 &            &          &              \\ \hline
+\end{longtable}
+\end{landscape}
+ETH 1.0\cite{wood2014ethereum} is going to be Eth 2.0\cite{caspereth2} with a different optimizations: Proof of work to Proof of Stake, Plasma(Layer 2), Casper and slahing conditions in validators.
+This example in the patternas for blockchain migrations \cite{DBLP:journals/corr/abs-1906-00239} 
+
+in Anion the hybrid concensus are a update in their consensus \cite{DBLP:journals/corr/abs-1906-03251}
+On June 18, 2019, Facebook announced its cryptocurrency project, Libra, which
+leverages blockchain technology to create a stable cryptocurrency that is backed by a basket of
+bank deposits and government treasuries. According to the announcement, Facebook intends to
+integrate Libra into its family of apps, including Messenger, WhatsApp, and Instagram to
+facilitate digital payments, while making Libra a decentralized, open platform for third parties.
+Users across the globe can use Libra to transfer and store value, and developers anywhere in the
+world can build new financial services on top of Libra. Facebook’s announcement generated a
+lot of excitement, but it also raised new concerns. Enthusiasts argued that Libra can bring
+decentralized finance to the mainstream, especially to the unbanked, while skeptics contended
+that Libra may allow Facebook to control our financial lives in addition to our social ones.
+Nevertheless, Facebook seems to have anticipated some of these concerns and have relinquished
+the control of the project to an independent organization, the Libra Association.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+
+
+\section{Headings: first level}
+\label{sec:headings}
+
+\lipsum[4] See Section \ref{sec:headings}.
+
+\subsection{Headings: second level}
+\lipsum[5]
+\begin{equation}
+\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
+\end{equation}
+
+\subsubsection{Headings: third level}
+\lipsum[6]
+
+\paragraph{Paragraph}
+\lipsum[7]
+
+\section{Examples of citations, figures, tables, references}
+\label{sec:others}
+\lipsum[8] \cite{kour2014real,kour2014fast} and see \cite{hadash2018estimate}.
+
+The documentation for \verb+natbib+ may be found at
+\begin{center}
+  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
+\end{center}
+Of note is the command \verb+\citet+, which produces citations
+appropriate for use in inline text.  For example,
+\begin{verbatim}
+   \citet{hasselmo} investigated\dots
+\end{verbatim}
+produces
+\begin{quote}
+  Hasselmo, et al.\ (1995) investigated\dots
+\end{quote}
+
+\begin{center}
+  \url{https://www.ctan.org/pkg/booktabs}
+\end{center}
+
+
+\subsection{Figures}
+\lipsum[10] 
+See Figure \ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
+\lipsum[11] 
+
+\begin{figure}
+  \centering
+  \fbox{\rule[-.5cm]{4cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+  \caption{Sample figure caption.}
+  \label{fig:fig1}
+\end{figure}
+
+\subsection{Tables}
+\lipsum[12]
+See awesome Table~\ref{tab:table}.
+
+\begin{table}
+ \caption{Sample table title}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    \multicolumn{2}{c}{Part}                   \\
+    \cmidrule(r){1-2}
+    Name     & Description     & Size ($\mu$m) \\
+    \midrule
+    Dendrite & Input terminal  & $\sim$100     \\
+    Axon     & Output terminal & $\sim$10      \\
+    Soma     & Cell body       & up to $10^6$  \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:table}
+\end{table}
+
+\subsection{Lists}
+\begin{itemize}
+\item Lorem ipsum dolor sit amet
+\item consectetur adipiscing elit. 
+\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
+\end{itemize}
+
+
+\printbibliography
+
+
+
+\end{document}
